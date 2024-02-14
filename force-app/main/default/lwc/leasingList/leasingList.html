@@ -1,0 +1,48 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card variant="Narrow" title="Upcoming Leasings" icon-name="standard:event">
+        <div class="slds-var-m-around_small">
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+        <div class="slds-var-m-around_small">
+
+            <c-searcher
+            cmp-label="Lease Name"
+            show-label="true"
+            onsearch={handleSearch}>
+            </c-searcher>
+
+        &nbsp;
+
+        <lightning-input
+            type="datetime"
+            value={startDateTime}
+            onchange={handleStartDate}
+            label="Start Date Time">
+        </lightning-input>
+
+        &nbsp;
+
+        <c-searcher
+            cmp-label="Lease Location"
+            show-label="true"
+            onsearch={handleLocationSearch}>
+        </c-searcher>
+
+    </div>
+
+        <div class="slds-var-m-around_small">
+            <lightning-datatable
+            key-field="id"
+            data={recordsToDisplay}
+            columns={columnsList}
+            show-row-number-colum
+            hide-checkbox-column>
+        </lightning-datatable>
+        </div>
+        
+    </lightning-card>
+
+</template>

@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-var-m-around_medium">
+        <template if:false={selectedRecord}>
+            <c-searcher
+                onsearch={handleSearch}
+                cmp-label={label}
+                is-required="true">
+            </c-searcher>
+        </template>
+    </div>
+
+    <div class="slds-var-m-around_medium">
+        <template if:false={selectedRecord}>
+            <template if:true={records}>
+                <ul class="slds-listbox">
+                    <template for:each={records} for:item="rec" for:index="index">
+                        <c-record-list
+                            key={rec.Id}
+                            rec={rec}
+                            icon-name={iconName}
+                            onselect={handleSelect}>
+                        </c-record-list>
+                    </template>
+                </ul>
+            </template>
+        </template>
+
+        <template if:true={selectedRecord}>
+            <label class="slds-form-element__label" for="unique-id-of-input">{label}</label>
+
+            <div class="slds-pill-container">
+                <lightning-pill class="pillSize" href="JavaScript:void(0);" label={selectedRecord.Name} name={selectedRecord.Name} onremove={handleRemove}>
+                    <lightning-icon icon-name={iconName} variant="circle" alternative-text={objectName}></lightning-icon>
+                </lightning-pill>
+            </div>
+        </template>
+    </div>
+</template>

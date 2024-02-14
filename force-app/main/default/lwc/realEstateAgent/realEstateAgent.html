@@ -1,0 +1,23 @@
+<template>
+    <template if:true={realestateagent}>
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item>
+                <template if:true={realestateagent.Profile__c}>
+                    <img src={realestateagent.Profile__c} alt="Profile photo"/>
+                </template>
+                <template if:false={realestateagent.Profile__c}>
+                    <img src="https://cdn2.f-cdn.com/contestentries/1440473/30778261/5bdd02db9ff4c_thumbCard.jpg" alt="Profile photo"/>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <p>{realestateagent.Name}</p>
+                <p>
+                    <lightning-formatted-email value={realestateagent.Email__c}></lightning-formatted-email>
+                </p>
+                <p>
+                    <lightning-formatted-rich-text value={realestateagent.About_Me__c}></lightning-formatted-rich-text>
+                </p>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+</template>
